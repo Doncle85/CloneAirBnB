@@ -27,20 +27,20 @@ import org.springframework.web.bind.annotation.*;
         }
 
         // Delete annonces
-        @DeleteMapping("annonces/delete/{id}")
+        @DeleteMapping("/delete/{id}")
         public Boolean deleteAnnonces(@PathVariable int id) {
             this.annoncesDao.deleteById(id);
             return true;
         }
 
         // Insert annonces
-        @PostMapping("annonces/add")
+        @PostMapping("/add")
         public Annonces insertAnnonces( @RequestBody Annonces annonces  ) {
             return this.annoncesDao.save(annonces);
         }
 
         // Update annonces
-        @PutMapping("annonces/update")
+        @PutMapping("/update")
         public Annonces updateAnnonces( @RequestBody Annonces annonces  ) {
             return this.annoncesDao.save(annonces);
         }
