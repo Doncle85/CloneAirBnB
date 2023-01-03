@@ -19,9 +19,9 @@ import com.project.modele.Users;
 public class UsersController {
 	@Autowired
 	private UsersDao usersDao;
-	
+
 	// Get List of users
-	@GetMapping("")
+	@GetMapping("/users")
 	public List<Users> findAllUsers() {
 		return this.usersDao.findAll();
 	}
