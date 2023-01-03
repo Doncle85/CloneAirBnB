@@ -19,8 +19,6 @@ public class Annonces {
 
     private String Description;
 
-
-
     @ManyToOne
     @JoinColumn(name = "id_categorie", nullable =false)
     private Categorie categorie;
@@ -28,40 +26,25 @@ public class Annonces {
     @OneToMany(targetEntity =Avis.class, mappedBy="annonces")
     private List<Avis> listAvis = new ArrayList<Avis>();
 
-    public List<Image> getListImage() {
-        return listImage;
-    }
-
-    public void setListImage(List<Image> listImage) {
-        this.listImage = listImage;
-    }
-
-    @OneToMany(targetEntity =Image.class, mappedBy="annonces")
+    @OneToMany(targetEntity =Image.class, mappedBy="annonce")
     private List<Image> listImage = new ArrayList<Image>();
 
-    public Annonces(List<Image> listImage) {
-        this.listImage = listImage;
+    @OneToMany(targetEntity =Reservation.class, mappedBy="annonces")
+    private List<Reservation> listReservation = new ArrayList<Reservation>();
+
+    public Annonces(int id_annonce) {
+        this.id_annonce = id_annonce;
     }
 
-    public Annonces(Categorie categorie) {
-        this.categorie = categorie;
-    }
-
-
-
-    public Categorie getCategorie() {
-        return categorie;
-    }
-
-    public void setCategorie(Categorie categorie) {
-        this.categorie = categorie;
-    }
-
-    public Annonces(int id_annonce, String localite, String nom, String description, String images) {
+    public Annonces(int id_annonce, String localite, String nom, String description, Categorie categorie, List<Avis> listAvis, List<Image> listImage, List<Reservation> listReservation) {
         this.id_annonce = id_annonce;
         this.localite = localite;
         Nom = nom;
-        Description = description;;
+        Description = description;
+        this.categorie = categorie;
+        this.listAvis = listAvis;
+        this.listImage = listImage;
+        this.listReservation = listReservation;
     }
 
     public Annonces() {
@@ -100,6 +83,38 @@ public class Annonces {
         Description = description;
     }
 
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
+    public List<Avis> getListAvis() {
+        return listAvis;
+    }
+
+    public void setListAvis(List<Avis> listAvis) {
+        this.listAvis = listAvis;
+    }
+
+    public List<Image> getListImage() {
+        return listImage;
+    }
+
+    public void setListImage(List<Image> listImage) {
+        this.listImage = listImage;
+    }
+
+    public List<Reservation> getListReservation() {
+        return listReservation;
+    }
+
+    public void setListReservation(List<Reservation> listReservation) {
+        this.listReservation = listReservation;
+    }
+
     @Override
     public String toString() {
         return "Annonces{" +
@@ -110,6 +125,7 @@ public class Annonces {
                 ", categorie=" + categorie +
                 ", listAvis=" + listAvis +
                 ", listImage=" + listImage +
+                ", listReservation=" + listReservation +
                 '}';
     }
 }

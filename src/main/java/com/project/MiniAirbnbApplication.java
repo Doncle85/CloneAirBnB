@@ -37,11 +37,11 @@ public class MiniAirbnbApplication implements CommandLineRunner {
 		//this.usersDao.save(new Users(0,"MALARME", "Clement", 
 		//		"0613899806","Paris12","Test1234", new Role(1)));
 		//System.out.println("List of Users  : " + this.usersDao.findAll());
-		System.out.println("List of reservation  : " + this.resDao.findAll());
+//		System.out.println("List of reservation  : " + this.resDao.findAll());
 
 
-		System.out.println("List of Users  : " + this.usersDao.findAll());
-		System.out.println("List of annouce  : " + this.annoncesDao.findAll());
+//		System.out.println("List of Users  : " + this.usersDao.findAll());
+//		System.out.println("List of annouce  : " + this.annoncesDao.findAll());
 
 	}
 	
