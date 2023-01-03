@@ -19,7 +19,7 @@ public class Annonces {
 
     private String Description;
 
-    private String images;
+
 
     @ManyToOne
     @JoinColumn(name = "id_categorie", nullable =false)
@@ -28,21 +28,26 @@ public class Annonces {
     @OneToMany(targetEntity =Avis.class, mappedBy="annonces")
     private List<Avis> listAvis = new ArrayList<Avis>();
 
+    public List<Image> getListImage() {
+        return listImage;
+    }
+
+    public void setListImage(List<Image> listImage) {
+        this.listImage = listImage;
+    }
+
+    @OneToMany(targetEntity =Image.class, mappedBy="annonces")
+    private List<Image> listImage = new ArrayList<Image>();
+
+    public Annonces(List<Image> listImage) {
+        this.listImage = listImage;
+    }
+
     public Annonces(Categorie categorie) {
         this.categorie = categorie;
     }
 
-    @Override
-    public String toString() {
-        return "Annonces{" +
-                "id_annonce=" + id_annonce +
-                ", localite='" + localite + '\'' +
-                ", Nom='" + Nom + '\'' +
-                ", Description='" + Description + '\'' +
-                ", images='" + images + '\'' +
-                ", categorie=" + categorie +
-                '}';
-    }
+
 
     public Categorie getCategorie() {
         return categorie;
@@ -56,8 +61,7 @@ public class Annonces {
         this.id_annonce = id_annonce;
         this.localite = localite;
         Nom = nom;
-        Description = description;
-        this.images = images;
+        Description = description;;
     }
 
     public Annonces() {
@@ -96,12 +100,16 @@ public class Annonces {
         Description = description;
     }
 
-    public String getImages() {
-        return images;
+    @Override
+    public String toString() {
+        return "Annonces{" +
+                "id_annonce=" + id_annonce +
+                ", localite='" + localite + '\'' +
+                ", Nom='" + Nom + '\'' +
+                ", Description='" + Description + '\'' +
+                ", categorie=" + categorie +
+                ", listAvis=" + listAvis +
+                ", listImage=" + listImage +
+                '}';
     }
-
-    public void setImages(String images) {
-        this.images = images;
-    }
-
 }

@@ -16,7 +16,7 @@ public class CategorieController {
     @Autowired
     private CategorieDao categorieDao;
     // Get List of Avis
-    @GetMapping("")
+    @GetMapping("/categorie")
     public List<Categorie> findAllAvis() {
         return this.categorieDao.findAll();
     }

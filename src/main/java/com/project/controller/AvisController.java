@@ -14,7 +14,7 @@ import java.util.Optional;
         @Autowired
         private AvisDao avisDao;
         // Get List of Avis
-        @GetMapping("")
+        @GetMapping("/avis")
         public List<Avis> findAllAvis() {
             return this.avisDao.findAll();
         }

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
         private AnnoncesDao annoncesDao;
 
         // Get List of annonces
-        @GetMapping("")
+        @GetMapping("/annonces")
         public List<Annonces> findAllAnnonces() {
             return this.annoncesDao.findAll();
         }

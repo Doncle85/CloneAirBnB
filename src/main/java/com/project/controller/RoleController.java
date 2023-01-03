@@ -14,47 +14,47 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.project.dao.ReservationDao;
-import com.project.modele.Reservation;
+
+import com.project.dao.RoleDao;
 import com.project.modele.Role;
 
 @RestController
-@RequestMapping("airBnB/reservation")
-public class ReservationController {
+@RequestMapping("airBnB/role")
+public class RoleController {
 	@Autowired
-	private ReservationDao reservationDao;
+	private RoleDao roleDao;
 	
 	
-	// Get List of Reservation
-	@GetMapping("")
-	public List<Reservation> findAllReservations() {
-		return this.reservationDao.findAll();
+	// Get List of Role
+	@GetMapping("/role")
+	public List<Role> findAllRole() {
+		return this.roleDao.findAll();
 	}
 	
-	// Get One  Reservation by id
+	// Get One  Role by id
 	@GetMapping("/{id}")
-	public Optional<Reservation> findOneResById(@PathVariable int id) {
-		return this.reservationDao.findById(id);
+	public Optional<Role> findOneRoleById(@PathVariable int id) {
+		return this.roleDao.findById(id);
 	}
 	
-	// Delete Reservation
+	// Delete Role
 	@DeleteMapping("/delete/{id}")
-	public Boolean deleteRes(@PathVariable int id) {
-		this.reservationDao.deleteById(id);
+	public Boolean deleteRole(@PathVariable int id) {
+		this.roleDao.deleteById(id);
 		return true;
 	}
 	
-	// Insert Reservation
+	// Insert Role
 	@PostMapping("/add")
 	@ResponseBody
-	public Reservation insertRes( @RequestBody Reservation res  ) {
-		return this.reservationDao.save(res);
+	public Role insertRole( @RequestBody Role role  ) {
+		return this.roleDao.save(role);
 	}
 	
-	// Update Reservation
+	// Update Role
 	@PutMapping("/update")
-	public Reservation updateRole( @RequestBody Reservation res ) {
-		return this.reservationDao.save(res);
+	public Role updateRole( @RequestBody Role role  ) {
+		return this.roleDao.save(role);
 	}
 
 }
